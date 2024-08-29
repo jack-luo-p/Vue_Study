@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回顾Object.defineProperty的作用</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <script>
+        let num = 11
+        var person = {
+            name: 'jack',
+            sex: '男',
+            // age: 11
+        }
+        Object.defineProperty(person,'age',{
+            get(){
+                console.log('/////////////')
+                return num
+            },
+            set(value){
+                num = value
+            }
+        })
+    </script>
+</body>
+</html>

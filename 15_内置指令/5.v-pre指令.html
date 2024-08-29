@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>v-pre指令</title>
+</head>
+<body>
+<!-- 
+    我们学过的指令
+        v-bind: 单向绑定解析表达式,可简写为 :xxx
+        v-model: 双向数据绑定
+        v-for: 遍历数组/对象/字符串
+        v-on: 绑定事件监听,可简写为@
+        v-if: 条件渲染
+        v-else: 条件渲染
+        v-show: 条件渲染
+
+    v-pre指令(没有值):
+        1. 跳过其所在节点的编译过程
+        2. 可利用它跳过: 没有使用指令语法、没有使用插值语法的节点,会加快编译
+ -->
+
+
+    <div id="root">
+        <h2 v-pre>Vue其实很简单</h2>
+        <h2 v-once>初始化的n值是:{{n}}</h2>
+        <h2>当前的n值是:{{n}}</h2>
+        <button @click="n++">点我n+1</button>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#root',
+        data(){
+            return {
+                n:1
+            }
+        }
+    })
+</script>
+</html>

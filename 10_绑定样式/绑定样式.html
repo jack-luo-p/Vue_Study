@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定样式</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .happy {
+
+        }
+        .sad {
+
+        }
+        .normal {
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <!-- 绑定class样式--字符串写法,适用于样式的类名不确定,需要动态指定 -->
+        <div class="basic" :class="mod" @click="changeMod">{{name}}</div>
+        <!-- 绑定class样式--数组写法,适用于:要绑定的样式个数不确定,名字也不确定 -->
+        <div class="basic" :class="classArr" @click="changeMod">{{name}}</div>
+        <!-- 绑定class样式--对象写法,适用于:要绑定的样式个数确定,名字也确定,但是要动态决定用不用 -->
+        <div class="basic" :class="classObj">{{name}}</div>
+        <!-- 绑定style样式--对象写法 -->
+        <div class="basic" :style="styleObj">{{name}}</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return{
+                    name: '尚硅谷',
+                    mod: 'normal',
+                    classArr:['normal','happy','sad'],
+                    classObj:{
+                        atguigu1:false,
+                        atguigu2:true
+                    },
+                    styleObj:{fontSize: '40px',color:'red',backgroundColor:'green'}
+                }
+            },
+            methods:{
+                changeMod(){
+                    const arr = ['happy','sad','normal']
+                    const index = Math.floor(Math.random()*3)
+                    this.mod = arr[index]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

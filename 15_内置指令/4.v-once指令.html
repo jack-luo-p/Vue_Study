@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>v-once指令</title>
+</head>
+<body>
+<!-- 
+    我们学过的指令
+        v-bind: 单向绑定解析表达式,可简写为 :xxx
+        v-model: 双向数据绑定
+        v-for: 遍历数组/对象/字符串
+        v-on: 绑定事件监听,可简写为@
+        v-if: 条件渲染
+        v-else: 条件渲染
+        v-show: 条件渲染
+
+    v-once指令(没有值):
+        1. v-once所在的节点在初次动态渲染后,就视为静态内容了
+        2. 以后数据的改变不会引起v-once所在的结构的更新,可以用于优化性能
+ -->
+
+
+    <div id="root">
+        <h2 v-once>初始化的n值是:{{n}}</h2>
+        <h2>当前的n值是:{{n}}</h2>
+        <button @click="n++">点我n+1</button>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#root',
+        data(){
+            return {
+                n:1
+            }
+        }
+    })
+</script>
+</html>

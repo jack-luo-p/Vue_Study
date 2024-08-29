@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入Vue -->
+    <title>v-cloak指令</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!-- 
+    我们学过的指令
+        v-bind: 单向绑定解析表达式,可简写为 :xxx
+        v-model: 双向数据绑定
+        v-for: 遍历数组/对象/字符串
+        v-on: 绑定事件监听,可简写为@
+        v-if: 条件渲染
+        v-else: 条件渲染
+        v-show: 条件渲染
+
+    v-cloak指令(没有值):
+        1. 本质是一个特殊属性,Vue实例创建完毕直接接管容器,会删掉v-cloak属性
+        2. 使用css配置v-cloak可以解决网速慢时页面展示出{{xxx}}的问题
+ -->
+
+
+    <div id="root">
+        <div v-cloak>{{name}}</div>
+    </div>
+    <!-- 这边后引入的Vue,以上需要借助v-cloak再配合css控制显示隐藏,否则页面会显示{{xxx}} -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</body>
+
+<script>
+    new Vue({
+        el: '#root',
+        data(){
+            return {
+                name: '尚硅谷',
+            }
+        }
+    })
+</script>
+</html>
