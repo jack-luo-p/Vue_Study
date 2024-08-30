@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el与data的两种写法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- data与el的两种写法
+        1. el有两种写法
+            a. new Vue的时候配置el属性
+            b. 先创建Vue实例,随后再通过vm.$mount('#root')指定el的值 ------ 挂载
+        2. data有两种写法
+            a. 对象式
+            b. 函数式
+            如何选择： 目前两种写法都可以,以后学习到组件,data必须使用函数式,否则会报错
+        3. 一个重要的原则：
+            由Vue管理的函数,一定不要写箭头函数,一旦写了箭头函数,this就不再是Vue实例了。
+             -->
+    <div id="root">
+        <h1>您好，{{name}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = true
+        // el的两种写法
+        // 1. 
+        // new Vue({
+        //     el: '#root',
+        //     data: {
+        //         name: '尚硅谷'
+        //     }
+        // })
+        // 2.
+        // const vm = new Vue({
+        //     data: {
+        //         name: '尚硅谷'
+        //     }
+        // })
+        // vm.$mount('#root')
+
+
+
+        // data的两种写法
+        // 1. 对象式
+        // const vm = new Vue({
+        //     data: {
+        //         name: '尚硅谷'
+        //     }
+        // })
+        // vm.$mount('#root')
+        // 2. 函数式
+        const vm = new Vue({
+            // data:function() {
+            //     console.log('vue实例this',this);
+            //     return {
+            //         name: '尚硅谷'
+            //     }
+            // }
+            data:()=> {
+                console.log('window实例this',this);
+                return {
+                    name: '尚硅谷'
+                }
+            }
+        })
+        vm.$mount('#root')
+    </script>
+</body>
+</html>
