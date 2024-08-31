@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>分析生命周期</title>
+</head>
+
+<body>
+
+    总结：
+
+
+    自己总结： beforeCreate(),生命周期第一步,里面拿不到数据代理对象_data,也拿不到vm实例里面的n
+    created(),生命周期第二步,里面生成了数据代理对象
+
+    <div id="root">
+        <h2>当前n值是d: {{n}}</h2>
+        <button @click="">点我n+1</button>
+    </div>
+</body>
+<script>  
+    const vm = new Vue({
+        el: '#root',
+        // template: `
+        //     <div>
+        //         <h2>当前n值是d: {{n}}</h2>
+        //         <button @click="">点我n+1</button>
+        //     </div>
+        // `,
+        data() {
+            return {
+                n: 1
+            }
+        },
+        beforeCreate() {
+            console.log("beforeCreate");
+        },
+        created() {
+            console.log("created");
+        },
+        beforeMount() {
+            console.log("beforeMount");
+        },
+        mounted() {
+            console.log('mounted');
+        },
+        methods: {
+
+        },
+        // Vue完成模板的解析并把初始的真实DOM元素放入页面后(挂载完毕)调用mounted
+
+    })
+
+</script>
+
+</html>
