@@ -4,7 +4,7 @@
             <div class="todo-wrap">
                 <MyHeader :addTodo="addTodo"/>
                 <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
-                <MyFooter/>
+                <MyFooter :allRecord="allRecord" :allDone="allDone"/>
             </div>
         </div>
     </div>
@@ -50,6 +50,14 @@ export default {
         // 删除
         deleteTodo(id){
             this.todos = this.todos.filter(todo=> todo.id !== id)
+        }
+    },
+    computed: {
+        allRecord() {
+            return this.todos.length
+        },
+        allDone() {
+            return this.todos.filter(todo => todo.done === true).length
         }
     }  
 }

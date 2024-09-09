@@ -4,7 +4,7 @@
             <input type="checkbox">
         </label>
         <span>
-            <span>已完成0</span> / 全部2
+            <span>已完成{{ allDone }}</span> / 全部{{ allRecord }}
         </span>
         <button class="btn btn-danger">清除已完成任务</button>
     </div>
@@ -12,6 +12,7 @@
 <script>
 export default {
     name: 'MyFooter',
+    props: ['allRecord','allDone']
 }
 </script>
 <style scoped>
