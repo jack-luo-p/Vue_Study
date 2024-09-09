@@ -1,10 +1,12 @@
 <template>
     <li>
         <label>
-            <input type="checkbox" :checked="todoObj.done">
+            <input type="checkbox" @change="handleCheck(todoObj.id)" :checked="todoObj.done">
+            <!-- 如下代码也能实现功能,但是不太推荐,因为修改违反了原则,只不过vue没监视到 -->
+            <!-- <input type="checkbox" v-model="todoObj.done"> -->
             <span>{{ todoObj.title }}</span>
         </label>
-        <button class="btn btn-danger" style="display: none;">删除</button>
+        <button class="btn btn-danger" @click="handelDelete(todoObj.id)">删除</button>
     </li>
 </template>
 <script>
@@ -13,6 +15,20 @@ export default {
     props:{
         todoObj: {
             type: Object
+        },
+        checkTodo: {},
+        deleteTodo:{}
+    },
+    methods: {
+        handleCheck(id) {
+            // 通知app组件将对应的done值取反
+            this.checkTodo(id)
+        },
+        // 删除
+        handelDelete(id) {
+            if (confirm('确定删除吗?')) {
+                this.deleteTodo(id)
+            }
         }
     }
 }
@@ -51,5 +67,12 @@ li:before {
 
 li:last-child {
     border-bottom: none;
+}
+li:hover {
+    background-color: #ddd;
+}
+
+li:hover button {
+    display: block;
 }
 </style>

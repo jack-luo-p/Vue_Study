@@ -3,7 +3,7 @@
         <div class="todo-container">
             <div class="todo-wrap">
                 <MyHeader :addTodo="addTodo"/>
-                <MyList :todos="todos"/>
+                <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
                 <MyFooter/>
             </div>
         </div>
@@ -32,11 +32,26 @@ export default {
         }
     },
     methods: {
+        // 添加一个todo
         addTodo(x) {
             console.log('我是app组件,我收到了数据:',x)
             this.todos.unshift(x)
+        },
+        // 勾选或取消选择
+        checkTodo(id) {
+            debugger
+            this.todos.forEach( (n) => {
+                if (n.id === id) {
+                    n.done = !n.done
+                }
+                console.log(n)
+            })
+        },
+        // 删除
+        deleteTodo(id){
+            this.todos = this.todos.filter(todo=> todo.id !== id)
         }
-    }
+    }  
 }
 </script>
 
