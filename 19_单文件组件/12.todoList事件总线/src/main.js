@@ -5,7 +5,9 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-// 使用插件
 new Vue({
-  render: h => h(App),
+  beforeCreate() {
+    Vue.prototype.$bus = this
+  },
+  render: h => h(App)
 }).$mount('#app')
